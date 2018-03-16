@@ -1,0 +1,123 @@
+<div class="row animated fadeIn">
+
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Perfil del usuario</h4>
+                <h6 class="card-subtitle"> nombre usuario </h6>
+
+                <form ngNativeValidate #f="ngForm" (ngSubmit)="guardar( f.value )" class="form p-t-20">
+                    <div class="form-group">
+                        <label for="exampleInputuname">Nombre de usuario</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-user"></i></div>
+                            <input [ngModel]="usuario.nombre" name="nombre" type="text" class="form-control" placeholder="Nombre de usuario" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputEmail">Correo de usuario</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-email"></i></div>
+                            <input [ngModel]="usuario.email" [disabled]="usuario.google" name="email" type="text" class="form-control" placeholder="Correo del usuario" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputA¡areas">Áreas de especialización</label>
+                        <div class="input-group">
+                            <div class="input-group"> <span class="input-group-addon">Áreas</span>
+                                <input [ngModel]="usuario.areas" name="areas" value="Ecología, Microbiologia, Sociedad" data-role="tagsinput" placeholder="add tags"> </div>
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputred1">Red principal</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-sharethis"></i></div>
+                            <input [ngModel]="usuario.red1" name="red1" type="text" class="form-control" placeholder="Red principal" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputred2">Red segundaria</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-sharethis-alt"></i></div>
+                            <input [ngModel]="usuario.red2" name="red2" type="text" class="form-control" placeholder="Red secundaria" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputweb">Pagina WEB</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-cloud"></i></div>
+                            <input [ngModel]="usuario.web" name="web" type="text" class="form-control" placeholder="Página WEB" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputfacebook">Facebook</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-facebook"></i></div>
+                            <input [ngModel]="usuario.facebook" name="facebook" type="text" class="form-control" placeholder="Cuenta de Facebbok" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputtwitter">Twitter</label>
+                        <div class="input-group">
+                            <div class="input-group-addon"><i class="ti-twitter-alt"></i></div>
+                            <input [ngModel]="usuario.twitter" name="twitter" type="text" class="form-control" placeholder="Cuenta de Twitter" required>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="exampleInputubicacion">Ubicación</label>
+                        <!-- <div class="input-group"> -->
+                        <h3>{{ title }}</h3>
+                        <!-- </div> -->
+                        <!-- this creates a google map on the page with the given lat/lng from -->
+                        <!-- the component as the initial center of the map: -->
+                        <!--
+                            <agm-map [latitude]="lat" [longitude]="lng">
+                                <agm-marker [latitude]="lat" [longitude]="lng">
+                                    mapa
+                                </agm-marker>
+                            </agm-map>
+                        -->
+                    </div>
+
+
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">
+                          <i class="fa fa-save"></i>
+                          Guardar
+                        </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-body" align="center">
+                <h4 class="card-title">Fotografía del usuario</h4>
+                <h6 class="card-subtitle"> nombre usuario </h6>
+
+                <img *ngIf="!imagenTemp" [src]="usuario.img | imagen" class="w150">
+                <img *ngIf="imagenTemp" [src]="imagenTemp" class="w150">
+
+                <input (change)="seleccionImage($event.target.files[0])" type="file">
+
+                <br><br>
+
+                <button (click)="cambiarImagen()" [disabled]="!imagenSubir" type="button" class="btn btn-block btn-success waves-effect waves-light m-r-10">
+                        <i class="fa fa-save"></i>
+                        Actualizar Foto
+                      </button>
+            </div>
+        </div>
+    </div>
+
+</div>
